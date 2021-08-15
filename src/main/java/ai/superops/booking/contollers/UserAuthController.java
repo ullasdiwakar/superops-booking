@@ -31,7 +31,7 @@ public class UserAuthController {
         Date issueTime = new Date(System.currentTimeMillis());
         Calendar cal = Calendar.getInstance();
         cal.setTime(issueTime);
-        cal.add(Calendar.HOUR_OF_DAY, 2);
+        cal.add(Calendar.HOUR_OF_DAY, 12);
 
         String token = Jwts
                 .builder()

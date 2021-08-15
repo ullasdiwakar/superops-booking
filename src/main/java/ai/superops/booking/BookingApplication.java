@@ -27,7 +27,10 @@ public class BookingApplication {
 					.addFilterAfter(new JWTAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class)
 					.authorizeRequests()
 					.antMatchers(HttpMethod.POST, "/login").permitAll()
+					.antMatchers(HttpMethod.GET, "/h2-console").permitAll()
 					.anyRequest().authenticated();
+
+			httpSecurity.headers().frameOptions().disable();
 		}
 	}
 
