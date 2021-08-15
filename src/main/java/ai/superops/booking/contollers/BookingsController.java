@@ -2,6 +2,7 @@ package ai.superops.booking.contollers;
 
 import ai.superops.booking.exceptions.OverbookingException;
 import ai.superops.booking.models.Bookings;
+import ai.superops.booking.models.SeatBlock;
 import ai.superops.booking.models.ShowDetails;
 import ai.superops.booking.repositories.ShowRepository;
 import ai.superops.booking.services.BookingService;
@@ -34,7 +35,7 @@ public class BookingsController {
 
     @PostMapping("/select-seats")
     @ResponseBody
-    public int selectSeats(@RequestBody List<String> seatNumbers, @RequestParam(name = "showId") int showId) throws OverbookingException {
+    public SeatBlock selectSeats(@RequestBody List<String> seatNumbers, @RequestParam(name = "showId") int showId) throws OverbookingException {
         if (seatNumbers.size() > 6) throw new OverbookingException("Cannot select more than 6 seats");
         return bookingService.selectSeats(seatNumbers, showId);
     }

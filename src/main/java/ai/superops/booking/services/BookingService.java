@@ -51,7 +51,7 @@ public class BookingService {
         return seatRepository.getAvailableSeatNumbersForShow(showId);
     }
 
-    public int selectSeats(List<String> seats, int showId) {
+    public SeatBlock selectSeats(List<String> seats, int showId) {
         List<String> availableSeats = seatRepository.getAvailableSeatNumbersForShow(showId);
         List<String> invalidSeats = new ArrayList<>();
         for (String seatNumber : seats) {
@@ -75,7 +75,7 @@ public class BookingService {
         SeatBlock blockedSeat = seatBlockRepository.saveAndFlush(block);
         executorService.schedule(new ReleaseBlockedSeats(blockedSeat), 2, TimeUnit.MINUTES);
 
-        return blockedSeat.getId();
+        return blockedSeat;
 
     }
 
