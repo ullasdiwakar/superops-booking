@@ -42,6 +42,7 @@ Run the project and the API can be accessed at `http://127.0.0.1:8080`
     - Body: List of String numbers of selected seats. ex. `["1A", "1B", "1C"]`
     - Query Parameter: Id of the show we are selecting this for. `?showId=1`
 - This endpoint will block the selected seats by the user and return an error if he tries to overbook
+- The blocked seats will be released after 2 minutes
 
 ### Book the seats that we blocked
 - API: `/book`
